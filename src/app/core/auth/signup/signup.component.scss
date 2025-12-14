@@ -1,0 +1,24 @@
+
+.parent{
+    height: 130vh;
+background-color: var(--back-color) !important;
+    form{
+background-color:var(--form-color) ;
+box-shadow: #00D150 21px 14px 0px -7px;
+.form-control{
+    background-color: #0206099d !important;
+}
+label{
+     color: #77818a !important;
+}
+a{
+    color: var(--main-color) !important;
+}
+    }
+}
+h4,h2{
+     font-family: var(--font-heading);
+  font-weight: 700;
+  font-style: normal;
+  color:   var(--main-color) !important;
+}
