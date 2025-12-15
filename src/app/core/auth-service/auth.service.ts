@@ -23,9 +23,9 @@ export class AuthService {
   }
 
   //______________________________verify__________________________
-  verify(data: Iauth): Observable<any> {
-    return this.httpClient.post(`${BASE_URL.base_url}/auth/verify`, data);
-  }
+verify(data: Iauth): Observable<any>{
+return this.httpClient.post(`${BASE_URL.base_url}/auth/verify`,data)
+}
 
   //______________________________login__________________________
   login(data: Iauth): Observable<any> {

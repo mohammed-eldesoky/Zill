@@ -6,16 +6,19 @@
       >
         <h2>Zill <i class="bi bi-question-diamond"></i></h2>
         <form
+          [formGroup]="registerForm"
+          (ngSubmit)="submit()"
           class="d-flex flex-column justify-content-center p-4 w-75 mx-auto rounded-3 mb-5"
         >
           <h4>Sign Up</h4>
 
           <div class="form-floating mb-3 w-100 m-auto">
             <input
-              type="email"
+              type="text"
               class="form-control bg-transparent border-0"
               id="floatingInput"
               placeholder="name@example.com"
+              formControlName="fullName"
             />
             <label for="floatingInput" class="text-white-50">Full Name</label>
           </div>
@@ -28,18 +31,19 @@
 
           <div class="form-floating mb-3 w-100">
             <input
-              type="email"
+              type="text"
               class="form-control bg-transparent border-0"
               id="floatingInput"
               placeholder="name@example.com"
+              formControlName="nickName"
             />
             <label for="floatingInput" class="text-white-50">Nick Name</label>
           </div>
           <div
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
-            <p class="m-0">Nick Name is required</p>
-            <p class="m-0">Nick Name must be at least 3 characters</p>
+            <p class="m-0">userName is required</p>
+            <p class="m-0">userName must be at least 3 characters</p>
           </div>
 
           <div class="form-floating mb-3 w-100">
@@ -48,6 +52,7 @@
               class="form-control bg-transparent border-0"
               id="floatingInput"
               placeholder="name@example.com"
+              formControlName="email"
             />
             <label for="floatingInput" class="text-white-50"
               >Email Address</label
@@ -62,10 +67,11 @@
 
           <div class="form-floating mb-3 w-100">
             <input
-              type="email"
+              type="date"
               class="form-control bg-transparent border-0"
               id="floatingInput"
               placeholder="name@example.com"
+              formControlName="dob"
             />
             <label for="floatingInput" class="text-white-50"
               >Date of Birth</label
@@ -80,10 +86,11 @@
 
           <div class="form-floating mb-3 w-100">
             <input
-              type="email"
+              type="password"
               class="form-control bg-transparent border-0"
               id="floatingInput"
               placeholder="name@example.com"
+              formControlName="password"
             />
             <label for="floatingInput" class="text-white-50">Password</label>
           </div>
@@ -104,7 +111,7 @@
               Submit
             </button>
 
-            <a href="" class="text-decoration-none text-success">
+            <a  class="text-decoration-none text-success">
               I have an account <i class="bi bi-arrow-right-circle-fill"></i
             ></a>
           </div>
