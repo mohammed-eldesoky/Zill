@@ -7,15 +7,18 @@
   --main-bg: #0C0C0C;
   --main-color: #00D14F;
   --back-color: #020609 !important;
---form-color: #333333;
-;
-    --font-heading:"Ubuntu", sans-serif;
+  --form-color: #333333;
+  --neon-color: #7cff00;
+
+  --font-heading:"Ubuntu", sans-serif;
   --font-body: "Cairo", sans-serif;
   --card-text: #ffffffc4;
   --card-footer-bg: #292929;
   
 }
-
+body{
+    background-color:rgb(21, 21, 21) !important;
+}
 .parent{
     height: 130vh;
 background-color: var(--back-color) !important;
