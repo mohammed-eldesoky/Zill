@@ -16,16 +16,37 @@ export class AuthService {
     private router: Router,
     @Inject(PLATFORM_ID) Id: object
   ) {}
+  //______________________________Tokens__________________________
 
+  saveTokens(accessToken: string, refreshToken: string) {
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+  }
+
+  getAccessToken(): string | null {
+    return localStorage.getItem('accessToken');
+  }
+
+  getRefreshToken(): string | null {
+    return localStorage.getItem('refreshToken');
+  }
+
+  clearTokens() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+  }
   //______________________________register__________________________
   register(data: Iauth): Observable<any> {
     return this.httpClient.post(`${BASE_URL.base_url}/auth/register`, data);
   }
 
   //______________________________verify__________________________
-verify(data: Iauth): Observable<any>{
-return this.httpClient.post(`${BASE_URL.base_url}/auth/verify-account`,data)
-}
+  verify(data: Iauth): Observable<any> {
+    return this.httpClient.post(
+      `${BASE_URL.base_url}/auth/verify-account`,
+      data
+    );
+  }
 
   //______________________________login__________________________
   login(data: Iauth): Observable<any> {
@@ -35,22 +56,21 @@ return this.httpClient.post(`${BASE_URL.base_url}/auth/verify-account`,data)
   //______________________________decode__________________________
 
   decodeUserData() {
-    const token = localStorage.getItem('token') || '';
-    const decoded = jwtDecode(token);
+    const token = this.getAccessToken();
+    if (!token) return;
+
+    const decoded = jwtDecode<JwtPayload>(token);
     this.userData.next(decoded);
-    console.log(this.userData);
   }
   //______________________________islogged__________________________
 
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('token');
-    return token !== null && this.userData.getValue() !== null;
+    return !!this.getAccessToken();
   }
   //______________________________logout__________________________
-
   logout() {
-    localStorage.removeItem('token');
+    this.clearTokens();
     this.userData.next(null);
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/login']);
   }
 }

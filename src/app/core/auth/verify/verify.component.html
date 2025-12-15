@@ -1,5 +1,6 @@
 <div class="parent w-100 overflow-hidden">
   <div class="container w-100 m-0 mx-auto pt-4 mb-4">
+    <p class="text-danger text-center">{{ errMessage }}</p>
     <div class="row">
       <div
         class="col-md-12 d-flex flex-column justify-content-center align-items-center mx-auto"
@@ -12,7 +13,9 @@
         >
           <h4>Verify Account</h4>
 
-     
+          <p class="text-white">
+            check your email <i class="bi bi-envelope-check"></i>
+          </p>
           <div class="form-floating mb-3 w-100">
             <input
               type="email"
@@ -25,12 +28,18 @@
               >Email Address</label
             >
           </div>
+          @if ( this.verifyForm.get('email')?.errors &&
+          this.verifyForm.get('email')?.touched){
           <div
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
+            @if(this.verifyForm.get('email')?.errors?.['required']) {
             <p class="m-0">Email is required</p>
+            } @if(this.verifyForm.get('email')?.errors?.['email']) {
             <p class="m-0">Enter avalid Email</p>
+            }
           </div>
+          }
 
           <div class="form-floating mb-3 w-100">
             <input
@@ -40,18 +49,22 @@
               placeholder="name@example.com"
               formControlName="otp"
             />
-            <label for="floatingInput" class="text-white-50"
-              >Otp</label
-            >
+            <label for="floatingInput" class="text-white-50">Otp</label>
           </div>
+          @if ( this.verifyForm.get('otp')?.errors &&
+          this.verifyForm.get('otp')?.touched){
           <div
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
+            @if(this.verifyForm.get('otp')?.errors?.['required']) {
             <p class="m-0">otp is required</p>
+            } @if(this.verifyForm.get('otp')?.errors?.['minlength'] &&
+            this.verifyForm.get('otp')?.errors?.['maxlength']) {
             <p class="m-0">Enter avalid otp</p>
+            }
           </div>
 
-        
+          }
           <div
             class="d-flex justify-content-center align-items-center w-100 mt-2"
           >

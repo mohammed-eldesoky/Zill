@@ -21,7 +21,7 @@ export class VerifyComponent {
  
     email: new FormControl(null, [Validators.required, Validators.email]),
   
-    otp: new FormControl(null, [Validators.required]),
+    otp: new FormControl(null, [Validators.required,Validators.minLength(5),Validators.maxLength(6)]),
   });
 
   //______________________________Submit form__________________________

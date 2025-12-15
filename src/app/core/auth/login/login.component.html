@@ -1,18 +1,17 @@
 <div class="parent w-100 overflow-hidden">
   <div class="container w-100 m-0 mx-auto pt-4 mb-4">
+    <p class="text-danger text-center">{{ errMessage }}</p>
     <div class="row">
       <div
         class="col-md-12 d-flex flex-column justify-content-center align-items-center mx-auto"
       >
         <h2>Zill <i class="bi bi-question-diamond"></i></h2>
         <form
+          [formGroup]="loginForm"
+          (ngSubmit)="submit()"
           class="d-flex flex-column justify-content-center p-4 w-75 mx-auto rounded-3 mb-5"
         >
           <h4>Login</h4>
-   
-
-    
-
 
           <div class="form-floating mb-3 w-100">
             <input
@@ -20,45 +19,51 @@
               class="form-control bg-transparent border-0"
               id="floatingInput"
               placeholder="name@example.com"
+              formControlName="email"
             />
             <label for="floatingInput" class="text-white-50"
               >Email Address</label
             >
           </div>
-    <div
-            class=" rounded-2 d-flex align-items-center bg-white mb-2  p-0 px-2 m-0 border-danger border-2 text-danger "
+          @if ( this.loginForm.get('email')?.errors &&
+          this.loginForm.get('email')?.touched){
+          <div
+            class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
-            <p class="m-0">
-              Email is required
-            </p>
-            <p class="m-0">
-              Enter avalid Email
-            </p>
+            @if(this.loginForm.get('email')?.errors?.['required']) {
+            <p class="m-0">Email is required</p>
+            } @if(this.loginForm.get('email')?.errors?.['email']) {
+            <p class="m-0">Enter avalid Email</p>
+            }
           </div>
-
-      
+          }
 
           <div class="form-floating mb-3 w-100">
             <input
-              type="email"
+              type="password"
               class="form-control bg-transparent border-0"
               id="floatingInput"
               placeholder="name@example.com"
+              formControlName="password"
             />
             <label for="floatingInput" class="text-white-50">Password</label>
           </div>
-    <div
-            class=" rounded-2 d-flex align-items-center bg-white mb-2  p-0 px-2 m-0 border-danger border-2 text-danger "
+          @if (this.loginForm.get('password')?.errors &&
+          this.loginForm.get('password')?.touched) {
+          <div
+            class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
+            @if(this.loginForm.get('password')?.errors?.['required']) {
+            <p class="m-0">Password is required</p>
+            } @if(this.loginForm.get('password')?.errors?.['minlength']&&
+            this.loginForm.get('password')?.errors?.['maxlength']) {
             <p class="m-0">
-             Password is required
+              Password must be at least 8 and include at least 1 letter, 1
+              number and 1 big letter
             </p>
-            <p class="m-0">
-              Password must be at least 8 and include at least 1 letter, 1 number and 1 big letter
-            </p>
+            }
           </div>
-
-
+          }
           <div
             class="d-flex justify-content-between align-items-center w-100 mt-2"
           >
@@ -66,8 +71,9 @@
               Submit
             </button>
 
-            <a href="" class="text-decoration-none text-success">
-              I have an account <i class="bi bi-arrow-right-circle-fill"></i
+            <a routerLink="/register" class="text-decoration-none text-success">
+              create account
+              <i class="bi bi-arrow-right-circle-fill"></i
             ></a>
           </div>
         </form>
