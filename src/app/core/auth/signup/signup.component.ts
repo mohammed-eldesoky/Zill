@@ -50,7 +50,7 @@ export class SignupComponent {
         this.Auth.register(this.registerForm.value).subscribe({
           next: (res) => {
             console.log(res);
-            if (res.message == 'success') {
+            if (res.success) {
               this.router.navigate(['/verify']);
             }
           },

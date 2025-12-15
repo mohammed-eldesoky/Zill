@@ -14,7 +14,7 @@ export const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       {
-        path: '',
+        path: 'login',
         loadComponent: () =>
           import('./core/auth/login/login.component')
             .then(c => c.LoginComponent),
@@ -24,6 +24,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./core/auth/signup/signup.component')
             .then(c => c.SignupComponent),
+      },
+      {
+        path: 'verify',
+        loadComponent: () =>
+          import('./core/auth/verify/verify.component')
+            .then(c => c.VerifyComponent),
       },
     ],
   },
