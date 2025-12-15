@@ -43,3 +43,17 @@ h4,h2{
   font-style: normal;
   color:   var(--main-color) !important;
 }
+.card{
+    background-color: var(--back-color) !important;
+    box-shadow: #00D150 21px 14px 0px -7px;
+    .card-title{
+        color: var(--main-color) !important;
+        font-family: var(--font-heading);
+    }
+    .card-text,.text-body-secondary{
+        color: var(--card-text) !important;
+        font-family: var(--font-body);
+;
+    }
+   
+}
