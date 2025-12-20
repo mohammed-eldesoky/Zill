@@ -1,23 +1,21 @@
-import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { BASE_URL } from '../constant/base.url';
 import { Iauth } from '../../shared/interfaces/iauth';
-import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: BehaviorSubject<null | JwtPayload> =
     new BehaviorSubject<null | JwtPayload>(null);
-  constructor(
-    private httpClient: HttpClient,
-    private router: Router,
-    @Inject(PLATFORM_ID) Id: object
-  ) {}
-  //______________________________Tokens__________________________
 
+  constructor(private httpClient: HttpClient, private router: Router) {}
+
+  //______________________________Tokens__________________________
   saveTokens(accessToken: string, refreshToken: string) {
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
@@ -35,6 +33,7 @@ export class AuthService {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
   }
+
   //______________________________register__________________________
   register(data: Iauth): Observable<any> {
     return this.httpClient.post(`${BASE_URL.base_url}/auth/register`, data);
@@ -53,8 +52,19 @@ export class AuthService {
     return this.httpClient.post(`${BASE_URL.base_url}/auth/login`, data);
   }
 
-  //______________________________decode__________________________
+  //______________________________refresh__________________________
+  refreshAccessToken(): Observable<any> {
+    const refreshToken = this.getRefreshToken();
+    if (!refreshToken) return throwError(() => new Error('No refresh token'));
 
+    return this.httpClient.post(
+      `${BASE_URL.base_url}/auth/refresh`,
+      {},
+      { headers: { refreshtoken: refreshToken } }
+    );
+  }
+
+  //______________________________decode__________________________
   decodeUserData() {
     const token = this.getAccessToken();
     if (!token) return;
@@ -62,11 +72,12 @@ export class AuthService {
     const decoded = jwtDecode<JwtPayload>(token);
     this.userData.next(decoded);
   }
-  //______________________________islogged__________________________
 
+  //______________________________islogged__________________________
   isLoggedIn(): boolean {
     return !!this.getAccessToken();
   }
+
   //______________________________logout__________________________
   logout() {
     this.clearTokens();

@@ -1,5 +1,6 @@
 <div class="container mt-5 d-flex justify-content-center align-items-center">
   <div class="row mt-5">
+    @for (message of messages; track $index) {
     <div class="col-md-12 mt-4">
       <div class="card mb-3 w-75 mx-auto p-5">
         <div class="row g-0">
@@ -12,20 +13,21 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">It's secret</h5>
+              <h5 class="card-title">ID: {{message._id}}</h5>
               <p class="card-text">
-                Some thoughts are easier to share when no one knows your name.
-                Here, your words speak for you — anonymously.
+              {{message.content}}
               </p>
               <p class="card-text">
                 <small class="text-body-secondary"
-                  >Last updated 3 mins ago</small
+                  >{{message.createdAt}}</small
                 >
               </p>
+              <p class="text-end "><i class="bi bi-chat-quote fs-3"></i></p>
             </div>
           </div>
         </div>
       </div>
     </div>
+    }
   </div>
 </div>
