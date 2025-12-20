@@ -4,16 +4,21 @@ import { BASE_URL } from '../../core/constant/base.url';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessagesService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient:HttpClient) { }
-
-
-//get all messages
-  getAllMessages():Observable<any>{
+  //get all messages
+  getAllMessages(): Observable<any> {
     return this.httpClient.get(`${BASE_URL.base_url}/message/`);
   }
-
+  // send anonymous message
+  sendMessage(nickname: string, content: string): Observable<any> {
+    const body = { content };
+    return this.httpClient.post(
+      `${BASE_URL.base_url}/message/${nickname}`,
+      body
+    );
+  }
 }
