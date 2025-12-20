@@ -1,0 +1,24 @@
+.hover-shadow {
+  transition: all 0.3s ease !important;
+}
+.hover-shadow:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.15) !important;
+}
+textarea{
+    background-color: #151515 !important;
+
+}
+textarea:focus{
+     border: 0
+  
+}
+textarea::placeholder{
+    color: rgba(255, 255, 255, 0.404) !important;
+    font-size: 15px;
+    
+}
+.btn{
+    background-color: var(--main-color) !important;
+    border: none !important;
+}
