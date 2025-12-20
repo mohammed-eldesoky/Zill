@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MessagesService } from '../services/messages.service';
 import { IMessage } from '../../shared/interfaces/imessages';
+import { FormatDatePipe } from "../../shared/pipes/format-date.pipe";
 
 @Component({
   selector: 'app-messages',
-  imports: [],
+  imports: [FormatDatePipe],
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.scss',
 })

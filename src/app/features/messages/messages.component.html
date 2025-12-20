@@ -13,13 +13,13 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">ID: {{message._id}}</h5>
-              <p class="card-text">
+              <h5 class="card-title fs-6">ID: {{message._id}}</h5>
+              <p class="card-text fs-5">
               {{message.content}}
               </p>
               <p class="card-text">
                 <small class="text-body-secondary"
-                  >{{message.createdAt}}</small
+                  >{{message.createdAt | formatDate}}</small
                 >
               </p>
               <p class="text-end "><i class="bi bi-chat-quote fs-3"></i></p>
