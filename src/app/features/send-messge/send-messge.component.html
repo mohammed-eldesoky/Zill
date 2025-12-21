@@ -1,21 +1,19 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
+<div
+  class="container d-flex justify-content-center align-items-center min-vh-100"
+>
   <div class="card shadow-lg border-0 rounded-4 w-100" style="max-width: 520px">
     <div class="card-header mx-auto d-flex justify-content-center">
-        <img src="assets/img4.jpg" class="w-100 mx-auto" alt="">
+      <img src="assets/img4.jpg" class="w-100 mx-auto" alt="" />
     </div>
     <div class="card-body p-4">
-      
       <!-- Title -->
-      <h4 class="text-center fw-bold mb-2">
-        Send an Anonymous Message
-      </h4>
+      <h4 class="text-center fw-bold mb-2">Send an Anonymous Message</h4>
       <p class="text-center text-white-50 mb-4">
         Your identity will remain completely hidden
       </p>
 
       <!-- Form -->
-      <form  >
-        
+      <form [formGroup]="send" (ngSubmit)="submit()">
         <!-- Message -->
         <div class="mb-3">
           <textarea
@@ -24,42 +22,48 @@
             placeholder="Write your message here..."
             formControlName="content"
           ></textarea>
-
+          @if (this.send.get('content')?.errors &&
+          this.send.get('content')?.touched ){
           <!-- Validation -->
-          <div class="text-danger mt-1" >
-            Message is required
+          <div class="text-danger mt-1">
+            @if (this.send.get('content')?.errors?.['required']) {
+            <p>Message is required</p>
+            } @if (this.send.get('content')?.errors?.['minlength']) {
+            <p>Message must be at least 3 characters</p>
+            }
           </div>
-
+          }
           <!-- Counter -->
-          <div class="text-end small text-muted mt-1">
-         mm
-          </div>
+          <div class="text-end small text-muted mt-1"></div>
         </div>
 
         <!-- Submit -->
         <button
           type="submit"
-          class="btn  w-100 py-2 rounded-3 fw-semibold"
-         
+          class="btn btn-primary w-100 py-2 rounded-3 fw-semibold d-flex justify-content-center align-items-center gap-2"
+          [disabled]="isLoading || send.invalid"
         >
-          <span >Send Message</span>
-          <span  class="spinner-border spinner-border-sm"></span>
+          @if (!isLoading) {
+          <span>Send Message</span>
+          } @else {
+          <span class="spinner-border spinner-border-sm"></span>
+          <span>Sending...</span>
+          }
         </button>
 
         <!-- Success -->
+        @if (successMessage) {
         <div class="alert alert-success mt-3 text-center">
-        
+          {{ successMessage }}
         </div>
-
+        }
         <!-- Error -->
-        <div  class="alert alert-danger mt-3 text-center">
-        
+        @if (errMessage) {
+        <div class="alert alert-danger mt-3 text-center">
+          {{ errMessage }}
         </div>
-
+        }
       </form>
-
     </div>
   </div>
 </div>
-
-

@@ -75,7 +75,7 @@ export const routes: Routes = [
         path: 'send-message',
         loadComponent: () =>
           import('./features/send-messge/send-messge.component')
-            .then(c => c.SendMessgeComponent),
+         .then(c => c.SendMessageComponent),
       }
     ],
   },
