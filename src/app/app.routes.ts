@@ -70,13 +70,22 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/settings/settigns.component')
             .then(c => c.SettignsComponent),
+            children: [
+              {
+                path: 'update-password',
+                loadComponent: () =>
+                  import('./features/settings/components/update-pass/update-pass.component')
+                    .then(c => c.UpdatePassComponent),
+              },
+            ]
       },
       {
         path: 'send-message',
         loadComponent: () =>
           import('./features/send-messge/send-messge.component')
          .then(c => c.SendMessageComponent),
-      }
+      },
+      
     ],
   },
 

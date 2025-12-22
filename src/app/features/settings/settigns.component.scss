@@ -1,0 +1,17 @@
+ul {
+    background-color: var(--back-color) !important;
+    height: 50vh;
+box-shadow: #00D150 21px 14px 0px -7px;
+    li {
+        list-style: none;
+        padding: 10px;
+        a {
+            text-decoration: none;
+            color: var(--main-color) !important;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-style:oblique;
+        }
+    }
+
+}

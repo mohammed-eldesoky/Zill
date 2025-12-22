@@ -1,0 +1,98 @@
+<div class="parent w-100 overflow-hidden h-100">
+  <div class="container w-100 m-0 mx-auto pt-4 mb-4">
+    <!-- Error Message -->
+    <p class="text-danger text-center">
+      {{ errMessage }}
+    </p>
+
+    <!-- Success Message -->
+
+    @if (successMessage) {
+    <p class="text-success text-center">
+      {{ successMessage }}
+    </p>
+    }
+    <div class="row">
+      <div
+        class="col-md-12 d-flex flex-column justify-content-center align-items-center mx-auto"
+      >
+        <form
+          [formGroup]="updatePass"
+          (ngSubmit)="submit()"
+          class="d-flex flex-column justify-content-center p-4 w-75 mx-auto rounded-3 mb-5"
+        >
+          <h4>Change Password</h4>
+
+          <!-- Old Password -->
+          <div class="form-floating mb-3 w-100">
+            <input
+              type="password"
+              class="form-control bg-transparent border-0"
+              id="oldPassword"
+              placeholder="Old Password"
+              formControlName="oldPassword"
+            />
+            <label for="oldPassword" class="text-white-50">
+              Old Password
+            </label>
+          </div>
+
+          @if ( updatePass.get('oldPassword')?.errors &&
+          updatePass.get('oldPassword')?.touched ) {
+          <div
+            class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
+          >
+            @if (updatePass.get('oldPassword')?.errors?.['required']) {
+            <p class="m-0">Password is required</p>
+            } @if (updatePass.get('oldPassword')?.errors?.['pattern']) {
+            <p class="m-0">
+              Password must be at least 8 characters and include letters and
+              numbers
+            </p>
+            }
+          </div>
+          }
+
+          <!-- New Password -->
+          <div class="form-floating mb-3 w-100">
+            <input
+              type="password"
+              class="form-control bg-transparent border-0"
+              id="newPassword"
+              placeholder="New Password"
+              formControlName="newPassword"
+            />
+            <label for="newPassword" class="text-white-50">
+              New Password
+            </label>
+          </div>
+
+          @if ( updatePass.get('newPassword')?.errors &&
+          updatePass.get('newPassword')?.touched ) {
+          <div
+            class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
+          >
+            @if (updatePass.get('newPassword')?.errors?.['required']) {
+            <p class="m-0">Password is required</p>
+            } @if (updatePass.get('newPassword')?.errors?.['pattern']) {
+            <p class="m-0">
+              Password must be at least 8 characters and include letters and
+              numbers
+            </p>
+            }
+          </div>
+          }
+
+          <!-- Submit Button -->
+          <div
+            class="d-flex justify-content-center align-items-center w-100 mt-2"
+          >
+            <button type="submit" class="btn btn-outline-success w-50 me-2">
+              Change
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
