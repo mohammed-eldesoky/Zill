@@ -4,15 +4,12 @@ import { BASE_URL } from '../constant/base.url';
 import { Iauth } from '../../shared/interfaces/iauth';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userData: BehaviorSubject<null | JwtPayload> =
-    new BehaviorSubject<null | JwtPayload>(null);
-
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   //______________________________Tokens__________________________
@@ -70,9 +67,13 @@ export class AuthService {
     if (!token) return;
 
     const decoded = jwtDecode<JwtPayload>(token);
-    this.userData.next(decoded);
+    localStorage.setItem('userData', JSON.stringify(decoded));
+    // this.userData.set(decoded);
   }
 
+  getUserData() {
+    return JSON.parse(localStorage.getItem('userData') || '{}');
+  }
   //______________________________islogged__________________________
   isLoggedIn(): boolean {
     return !!this.getAccessToken();
@@ -81,7 +82,7 @@ export class AuthService {
   //______________________________logout__________________________
   logout() {
     this.clearTokens();
-    this.userData.next(null);
+    localStorage.removeItem('userData');
     this.router.navigate(['/login']);
   }
 }

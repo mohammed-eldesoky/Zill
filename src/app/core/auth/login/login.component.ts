@@ -44,7 +44,6 @@ export class LoginComponent {
 
             //access token
             this.Auth.decodeUserData();
-
             this.router.navigate(['/app']);
           },
           error: (err) => {
