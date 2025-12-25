@@ -1,6 +1,6 @@
 <div class="container mt-5 d-flex justify-content-center align-items-center">
-  <div class="row mt-5">
-    @for (message of messages; track $index) {
+  <div class="row mt-5 d-flex justify-content-center align-items-center ">
+    @for (message of paginatedMessages; track $index) {
     <div class="col-md-12 mt-4">
       <div class="card mb-3 w-75 mx-auto p-5">
         <div class="row g-0">
@@ -28,6 +28,29 @@
         </div>
       </div>
     </div>
+    
     }
+    <div class="mx-auto d-flex justify-content-center mt-3">
+<ul class="pagination border-0">
+
+  <li class="page-item" [class.disabled]="currentPage === 1">
+    <a class="page-link" (click)="prevPage()">Previous</a>
+  </li>
+
+  @for (page of [].constructor(totalPages); track $index; let i = $index) { 
+    <li class="page-item" [class.active]="currentPage === i + 1">
+      <a class="page-link" (click)="goToPage(i + 1)">
+        {{ i + 1 }}
+      </a>
+    </li>
+  }
+
+  <li class="page-item" [class.disabled]="currentPage === totalPages">
+    <a class="page-link" (click)="nextPage()">Next</a>
+  </li>
+
+</ul>
+
+</div>
   </div>
 </div>

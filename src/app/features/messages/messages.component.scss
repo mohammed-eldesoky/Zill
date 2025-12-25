@@ -5,3 +5,14 @@ p{
 small{
     font-family: var(--font-body) !important;
 }
+.page-link {
+    background-color: var(--back-color) !important;
+    color: var(--main-color) !important;
+border: none;
+} 
+
+.page-item.active .page-link {
+  background-color: var(--main-color) !important;
+  color: #fff !important;
+  border-color: var(--main-color) !important;
+}
