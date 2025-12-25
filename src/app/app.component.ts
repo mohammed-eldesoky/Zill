@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { LangService } from './features/services/lang.service';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, FormsModule],
@@ -10,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent {
   title = 'Zill';
    
-
+  constructor(private langService: LangService) {}
   ngOnInit(): void {
   }
 }
