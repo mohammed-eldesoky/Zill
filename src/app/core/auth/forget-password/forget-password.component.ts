@@ -7,10 +7,10 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-
+import {TranslatePipe} from "@ngx-translate/core";
 @Component({
   selector: 'app-forget-password',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink ,TranslatePipe],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.scss',
 })

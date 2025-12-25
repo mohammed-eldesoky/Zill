@@ -21,7 +21,7 @@
           (ngSubmit)="submit()"
           class="d-flex flex-column justify-content-center p-4 w-75 mx-auto rounded-3 mb-5"
         >
-          <h4>Change Password</h4>
+          <h4>{{'CHANGE_PASSWORD' |translate}}</h4>
 
           <!-- Old Password -->
           <div class="form-floating mb-3 w-100">
@@ -33,7 +33,7 @@
               formControlName="oldPassword"
             />
             <label for="oldPassword" class="text-white-50">
-              Old Password
+            {{'OLD_PASSWORD' |translate}}
             </label>
           </div>
 
@@ -43,11 +43,10 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if (updatePass.get('oldPassword')?.errors?.['required']) {
-            <p class="m-0">Password is required</p>
+            <p class="m-0">  {{'PASSWORD_REQUIRED' |translate}}</p>
             } @if (updatePass.get('oldPassword')?.errors?.['pattern']) {
             <p class="m-0">
-              Password must be at least 8 characters and include letters and
-              numbers
+          {{'PASSWORD_PATTERN' |translate}}
             </p>
             }
           </div>
@@ -63,7 +62,7 @@
               formControlName="newPassword"
             />
             <label for="newPassword" class="text-white-50">
-              New Password
+                  {{'NEW_PASSWORD' |translate}}
             </label>
           </div>
 
@@ -73,11 +72,10 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if (updatePass.get('newPassword')?.errors?.['required']) {
-            <p class="m-0">Password is required</p>
+            <p class="m-0"> {{'PASSWORD_REQUIRED' |translate}}</p>
             } @if (updatePass.get('newPassword')?.errors?.['pattern']) {
             <p class="m-0">
-              Password must be at least 8 characters and include letters and
-              numbers
+                 {{'PASSWORD_PATTERN' |translate}}
             </p>
             }
           </div>
@@ -88,7 +86,7 @@
             class="d-flex justify-content-center align-items-center w-100 mt-2"
           >
             <button type="submit" class="btn btn-outline-success w-50 me-2">
-              Change
+                {{'CHANGE' |translate}}
             </button>
           </div>
         </form>

@@ -28,14 +28,14 @@
     (click)="copyLink()"
   >
     <i class="bi bi-clipboard"></i>
-    Copy
+    {{'COPY'|translate}}
   </button>
 </div>
 }
       <!-- Title -->
-      <h4 class="text-center fw-bold mb-2">Send an Anonymous Message</h4>
+      <h4 class="text-center fw-bold mb-2">{{'SEND_ANONYMOUS_MESSAGE' |translate}}</h4>
       <p class="text-center text-white-50 mb-4">
-        Your identity will remain completely hidden
+      {{'IDENTITY_HIDDEN' |translate}}
       </p>
 
       <!-- Form -->
@@ -53,9 +53,9 @@
           <!-- Validation -->
           <div class="text-danger mt-1">
             @if (this.send.get('content')?.errors?.['required']) {
-            <p>Message is required</p>
+            <p> {{'MESSAGE_REQUIRED' |translate}}</p>
             } @if (this.send.get('content')?.errors?.['minlength']) {
-            <p>Message must be at least 3 characters</p>
+            <p>{{'MESSAGE_MINLENGTH' |translate}}</p>
             }
           </div>
           }
@@ -70,10 +70,10 @@
           [disabled]="isLoading || send.invalid"
         >
           @if (!isLoading) {
-          <span>Send Message</span>
+          <span>{{'SEND_MESSAGE' |translate}}</span>
           } @else {
           <span class="spinner-border spinner-border-sm"></span>
-          <span>Sending...</span>
+          <span>{{'SENDING' |translate}}</span>
           }
         </button>
 

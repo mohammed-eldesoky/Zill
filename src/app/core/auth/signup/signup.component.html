@@ -5,13 +5,13 @@
       <div
         class="col-md-12 d-flex flex-column justify-content-center align-items-center mx-auto"
       >
-        <h2>Zill <i class="bi bi-question-diamond"></i></h2>
+        <h2>{{'ZILL' |translate}} <i class="bi bi-question-diamond"></i></h2>
         <form
           [formGroup]="registerForm"
           (ngSubmit)="submit()"
           class="d-flex flex-column justify-content-center p-4 w-75 mx-auto rounded-3 mb-5"
         >
-          <h4>Sign Up</h4>
+          <h4>{{'SIGN_UP' |translate}}</h4>
 
           <div class="form-floating mb-3 w-100 m-auto">
             <input
@@ -21,7 +21,7 @@
               placeholder="name@example.com"
               formControlName="fullName"
             />
-            <label for="floatingInput" class="text-white-50">Full Name</label>
+            <label for="floatingInput" class="text-white-50">{{'FULL_NAME' |translate}}</label>
           </div>
           @if ( this.registerForm.get('fullName')?.errors &&
           this.registerForm.get('fullName')?.touched) {
@@ -29,11 +29,11 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 mt-0 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.registerForm.get('fullName')?.errors?.['required']) {
-            <p class="m-0">Name is required</p>
+            <p class="m-0">{{'FULL_NAME_REQUIRED' |translate}}</p>
             } @if(this.registerForm.get('fullName')?.errors?.['maxlength']) {
-            <p class="m-0">Name maxlength 50</p>
+            <p class="m-0">{{'FULL_NAME_MAXLENGTH' |translate}}</p>
             } @if(this.registerForm.get('fullName')?.errors?.['minlength']) {
-            <p class="m-0">Name minlength 6</p>
+            <p class="m-0">{{'FULL_NAME_MINLENGTH' |translate}}</p>
             }
           </div>
           }
@@ -46,7 +46,7 @@
               placeholder="name@example.com"
               formControlName="nickName"
             />
-            <label for="floatingInput" class="text-white-50">userName</label>
+            <label for="floatingInput" class="text-white-50">{{'USERNAME' |translate}}</label>
           </div>
           @if ( this.registerForm.get('nickName')?.errors &&
           this.registerForm.get('nickName')?.touched) {
@@ -54,9 +54,9 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.registerForm.get('nickName')?.errors?.['required']) {
-            <p class="m-0">userName is required</p>
+            <p class="m-0">{{'USERNAME_REQUIRED' |translate}}</p>
             } @if(this.registerForm.get('nickName')?.errors?.['minlength']) {
-            <p class="m-0">userName must be at least 3 characters</p>
+            <p class="m-0">{{'USERNAME_MINLENGTH' |translate}}</p>
             }
           </div>
           }
@@ -70,7 +70,7 @@
               formControlName="email"
             />
             <label for="floatingInput" class="text-white-50"
-              >Email Address</label
+              >{{'EMAIL_ADDRESS' |translate}}</label
             >
           </div>
           @if ( this.registerForm.get('email')?.errors &&
@@ -79,9 +79,9 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.registerForm.get('email')?.errors?.['required']) {
-            <p class="m-0">Email is required</p>
+            <p class="m-0">{{'EMAIL_REQUIRED' |translate}}</p>
             } @if(this.registerForm.get('email')?.errors?.['email']) {
-            <p class="m-0">Enter avalid Email</p>
+            <p class="m-0">{{'EMAIL_INVALID' |translate}}</p>
             }
           </div>
           }
@@ -94,7 +94,7 @@
               formControlName="dob"
             />
             <label for="floatingInput" class="text-white-50"
-              >Date of Birth</label
+              >{{'DATE_OF_BIRTH' |translate}}</label
             >
           </div>
           @if ( this.registerForm.get('dob')?.errors &&
@@ -103,7 +103,7 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.registerForm.get('dob')?.errors?.['required']) {
-            <p class="m-0">Date of Birth is required</p>
+            <p class="m-0">{{'DATE_OF_BIRTH_REQUIRED' |translate}}</p>
             }
           </div>
           }
@@ -116,7 +116,7 @@
               placeholder="name@example.com"
               formControlName="password"
             />
-            <label for="floatingInput" class="text-white-50">Password</label>
+            <label for="floatingInput" class="text-white-50">{{'PASSWORD' |translate}}</label>
           </div>
 
           @if (this.registerForm.get('password')?.errors &&
@@ -125,12 +125,11 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.registerForm.get('password')?.errors?.['required']) {
-            <p class="m-0">Password is required</p>
+            <p class="m-0">{{'PASSWORD_REQUIRED' |translate}}</p>
             } @if(this.registerForm.get('password')?.errors?.['minlength']&&
             this.registerForm.get('password')?.errors?.['maxlength']) {
             <p class="m-0">
-              Password must be at least 8 and include at least 1 letter, 1
-              number and 1 big letter
+            {{'PASSWORD_PATTERN' |translate}}
             </p>
             }
           </div>
@@ -140,11 +139,11 @@
             class="d-flex justify-content-between align-items-center w-100 mt-2"
           >
             <button type="submit" class="btn btn-outline-success w-50 me-2">
-              Submit
+             {{'SUBMIT' |translate}}
             </button>
 
             <a  routerLink="/login"    class="text-decoration-none text-success">
-              I have an account <i class="bi bi-arrow-right-circle-fill"></i
+                 {{'IHAVE_AN_ACCOUNT' |translate}} <i class="bi bi-arrow-right-circle-fill"></i
             ></a>
           </div>
         </form>

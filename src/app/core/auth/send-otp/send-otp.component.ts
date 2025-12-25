@@ -3,9 +3,10 @@ import { AuthService } from '../../auth-service/auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+import {TranslatePipe} from "@ngx-translate/core";
 @Component({
   selector: 'app-send-otp',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,TranslatePipe],
   templateUrl: './send-otp.component.html',
   styleUrl: './send-otp.component.scss'
 })

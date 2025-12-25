@@ -5,16 +5,16 @@
       <div
         class="col-md-12 d-flex flex-column justify-content-center align-items-center mx-auto"
       >
-        <h2>Zill <i class="bi bi-question-diamond"></i></h2>
+        <h2>{{'ZILL' |translate}}<i class="bi bi-question-diamond"></i></h2>
         <form
           [formGroup]="verifyForm"
           (ngSubmit)="submit()"
           class="d-flex flex-column justify-content-center p-4 w-75 mx-auto rounded-3 mb-5"
         >
-          <h4>Verify Account</h4>
+          <h4>{{'VERIFY_ACCOUNT' |translate}}</h4>
 
           <p class="text-white">
-            check your email <i class="bi bi-envelope-check"></i>
+           {{'CHECK_YOUR_EMAIL' |translate}} <i class="bi bi-envelope-check"></i>
           </p>
           <div class="form-floating mb-3 w-100">
             <input
@@ -25,7 +25,7 @@
               formControlName="email"
             />
             <label for="floatingInput" class="text-white-50"
-              >Email Address</label
+              >{{'EMAIL_ADDRESS' |translate}}</label
             >
           </div>
           @if ( this.verifyForm.get('email')?.errors &&
@@ -34,9 +34,9 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.verifyForm.get('email')?.errors?.['required']) {
-            <p class="m-0">Email is required</p>
+            <p class="m-0">{{'EMAIL_REQUIRED' |translate}}</p>
             } @if(this.verifyForm.get('email')?.errors?.['email']) {
-            <p class="m-0">Enter avalid Email</p>
+            <p class="m-0">{{'EMAIL_INVALID' |translate}}</p>
             }
           </div>
           }
@@ -49,7 +49,7 @@
               placeholder="name@example.com"
               formControlName="otp"
             />
-            <label for="floatingInput" class="text-white-50">Otp</label>
+            <label for="floatingInput" class="text-white-50">{{'OTP' | translate}}</label>
           </div>
           @if ( this.verifyForm.get('otp')?.errors &&
           this.verifyForm.get('otp')?.touched){
@@ -57,10 +57,10 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.verifyForm.get('otp')?.errors?.['required']) {
-            <p class="m-0">otp is required</p>
+            <p class="m-0">{{'OTP_REQUIRED' | translate}}</p>
             } @if(this.verifyForm.get('otp')?.errors?.['minlength'] &&
             this.verifyForm.get('otp')?.errors?.['maxlength']) {
-            <p class="m-0">Enter avalid otp</p>
+            <p class="m-0">{{'OTP_INVALID' | translate}}</p>
             }
           </div>
 
@@ -69,7 +69,7 @@
             class="d-flex justify-content-center align-items-center w-100 mt-2"
           >
             <button type="submit" class="btn btn-outline-success w-50 me-2">
-              Submit
+               {{'SUBMIT' | translate}}
             </button>
           </div>
         </form>

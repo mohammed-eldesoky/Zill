@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../../core/auth-service/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PasswordService } from '../../../services/password.service';
-
+import {TranslatePipe} from "@ngx-translate/core";
 @Component({
   selector: 'app-update-pass',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './update-pass.component.html',
   styleUrl: './update-pass.component.scss'
 })

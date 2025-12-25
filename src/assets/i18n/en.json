@@ -41,5 +41,16 @@
   "SENDING": "Sending...",
   "CHANGE": "Change",
   "NEW_PASSWORD": "New Password",
-  "OLD_PASSWORD": "Old Password"
+  "OLD_PASSWORD": "Old Password",
+  "COPY":"Copy",
+  "LOGOUT":"Logout",
+  "CHANGE_PASSWORD":"Change Password",
+  "LANGUAGE":"Language",
+  "FORGET_PASSWORD":"Forget Password",
+  "SEND_OTP":"Send Otp",
+  "VERIFY":"Verify",
+  "ENTER_OTP":"Enter Otp",
+  "SEND_OTP_AGAIN":"Send Otp Again",
+  "IHAVE_AN_ACCOUNT":"I have an account"
+
 }

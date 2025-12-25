@@ -8,11 +8,11 @@ import {
 import { MessagesService } from '../services/messages.service';
 import { AuthService } from '../../core/auth-service/auth.service';
 import { ActivatedRoute } from '@angular/router';
-
+import {TranslatePipe} from "@ngx-translate/core";
 @Component({
   selector: 'app-send-message',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,TranslatePipe],
   templateUrl: './send-messge.component.html',
   styleUrl: './send-messge.component.scss',
 })

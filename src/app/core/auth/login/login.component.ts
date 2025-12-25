@@ -7,10 +7,10 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-
+import {TranslatePipe} from "@ngx-translate/core";
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

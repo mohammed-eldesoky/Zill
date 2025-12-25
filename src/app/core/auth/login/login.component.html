@@ -5,13 +5,13 @@
       <div
         class="col-md-12 d-flex flex-column justify-content-center align-items-center mx-auto"
       >
-        <h2>Zill <i class="bi bi-question-diamond"></i></h2>
+        <h2>{{'ZILL' |translate}}<i class="bi bi-question-diamond"></i></h2>
         <form
           [formGroup]="loginForm"
           (ngSubmit)="submit()"
           class="d-flex flex-column justify-content-center p-4 w-75 mx-auto rounded-3 mb-5"
         >
-          <h4>Login</h4>
+          <h4>{{'LOGIN' |translate}}</h4>
 
           <div class="form-floating mb-3 w-100">
             <input
@@ -22,7 +22,7 @@
               formControlName="email"
             />
             <label for="floatingInput" class="text-white-50"
-              >Email Address</label
+              >{{'EMAIL_ADDRESS' |translate}}</label
             >
           </div>
           @if ( this.loginForm.get('email')?.errors &&
@@ -31,9 +31,9 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.loginForm.get('email')?.errors?.['required']) {
-            <p class="m-0">Email is required</p>
+            <p class="m-0">{{'EMAIL_REQUIRED' |translate}}</p>
             } @if(this.loginForm.get('email')?.errors?.['email']) {
-            <p class="m-0">Enter avalid Email</p>
+            <p class="m-0">{{'EMAIL_INVALID' |translate}}</p>
             }
           </div>
           }
@@ -46,7 +46,7 @@
               placeholder="name@example.com"
               formControlName="password"
             />
-            <label for="floatingInput" class="text-white-50">Password</label>
+            <label for="floatingInput" class="text-white-50">{{'PASSWORD' |translate}}</label>
           </div>
           @if (this.loginForm.get('password')?.errors &&
           this.loginForm.get('password')?.touched) {
@@ -54,12 +54,11 @@
             class="rounded-2 d-flex align-items-center bg-white mb-2 p-0 px-2 m-0 border-danger border-2 text-danger"
           >
             @if(this.loginForm.get('password')?.errors?.['required']) {
-            <p class="m-0">Password is required</p>
+            <p class="m-0">{{'PASSWORD_REQUIRED' |translate}}</p>
             } @if(this.loginForm.get('password')?.errors?.['minlength']&&
             this.loginForm.get('password')?.errors?.['maxlength']) {
             <p class="m-0">
-              Password must be at least 8 and include at least 1 letter, 1
-              number and 1 big letter
+            {{'PASSWORD_PATTERN' |translate}}
             </p>
             }
           </div>
@@ -68,15 +67,15 @@
             class="d-flex justify-content-between align-items-center w-100 mt-2"
           >
             <button type="submit" class="btn btn-outline-success w-50 me-2">
-              Submit
+           {{'SUBMIT' |translate}}
             </button>
 
             <a routerLink="/register" class="text-decoration-none text-success">
-              create account
+                 {{'CREATE_ACCOUNT' |translate}}
               <i class="bi bi-arrow-right-circle-fill"></i
             ></a>
           </div>
-          <span class="mt-1"><a routerLink="/send-otp">Forget Password?</a></span>
+          <span class="mt-1"><a routerLink="/send-otp">{{'FORGET_PASSWORD' |translate}}</a></span>
         </form>
       </div>
     </div>

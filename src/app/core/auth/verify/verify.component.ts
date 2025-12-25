@@ -3,10 +3,10 @@ import { AuthService } from '../../auth-service/auth.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
-
+import {TranslatePipe} from "@ngx-translate/core";
 @Component({
   selector: 'app-verify',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,TranslatePipe],
   templateUrl: './verify.component.html',
   styleUrl: './verify.component.scss'
 })

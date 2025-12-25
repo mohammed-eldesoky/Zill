@@ -41,5 +41,18 @@
   "SENDING": "جاري الإرسال...",
   "CHANGE": "تغيير",
   "NEW_PASSWORD": "كلمة المرور الجديدة",
-  "OLD_PASSWORD": "كلمة المرور القديمة"
+  "OLD_PASSWORD": "كلمة المرور القديمة",
+  "COPY":"نسخ",
+  "LOGOUT":"تسجيل الخروج",
+  "CHANGE_PASSWORD":"تغيير كلمة المرور",
+  "LANGUAGE":"اللغة",
+  "FORGET_PASSWORD":"نسيت كلمة المرور",
+  "SEND_OTP":"ارسال رمز التحقق",
+  "VERIFY":"تأكيد",
+  "ENTER_OTP":"ادخل رمز التحقق",
+  "SEND_OTP_AGAIN":"ارسال رمز التحقق مرة اخرى",
+  "IHAVE_AN_ACCOUNT":"لدي حساب"
+
+
+
 }
