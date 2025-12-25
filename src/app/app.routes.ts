@@ -31,6 +31,13 @@ export const routes: Routes = [
             (c) => c.VerifyComponent
           ),
       },
+      {
+        path: 'send-otp',
+        loadComponent: () =>
+          import('./core/auth/send-otp/send-otp.component').then(
+            (c) => c.SendOtpComponent
+          ),
+      }
     ],
   },
 

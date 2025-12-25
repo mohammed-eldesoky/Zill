@@ -79,6 +79,15 @@ export class AuthService {
     return !!this.getAccessToken();
   }
 
+  //______________________________send otp__________________________
+  sendOtp(data: Iauth): Observable<any> {
+    return this.httpClient.post(
+      `${BASE_URL.base_url}/auth/send-otp`,
+      data
+    );
+  }
+
+
   //______________________________logout__________________________
   logout() {
     this.clearTokens();
