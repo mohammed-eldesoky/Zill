@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.component';
+import { authGuardGuard } from './core/guard/auth-guard.guard';
+import { guestGuard } from './core/guard/guest-guard.guard';
 
 export const routes: Routes = [
   /* ======================= AUTH LAYOUT ======================== */
@@ -9,6 +11,7 @@ export const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
+    canActivate:[guestGuard],
     children: [
       {
         path: 'login',
@@ -54,6 +57,7 @@ export const routes: Routes = [
   {
     path: 'app',
     component: MainLayoutComponent,
+    canActivateChild: [authGuardGuard],
     children: [
       {
         path: '',
