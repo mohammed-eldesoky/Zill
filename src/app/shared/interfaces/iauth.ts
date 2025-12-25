@@ -4,5 +4,6 @@ export interface Iauth {
     email: string;
     password: string;
     dob?:string;
-    otp?:string
+    otp?:string;
+    newPassword?:string;
 }

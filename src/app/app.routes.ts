@@ -37,7 +37,15 @@ export const routes: Routes = [
           import('./core/auth/send-otp/send-otp.component').then(
             (c) => c.SendOtpComponent
           ),
+      },
+      {
+        path: 'forget-password',
+        loadComponent: () =>
+          import('./core/auth/forget-password/forget-password.component').then(
+            (c) => c.ForgetPasswordComponent
+          ),
       }
+
     ],
   },
 

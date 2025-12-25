@@ -81,13 +81,17 @@ export class AuthService {
 
   //______________________________send otp__________________________
   sendOtp(data: Iauth): Observable<any> {
-    return this.httpClient.post(
-      `${BASE_URL.base_url}/auth/send-otp`,
+    return this.httpClient.post(`${BASE_URL.base_url}/auth/send-otp`, data);
+  }
+
+  //______________________________forget password__________________________
+
+  forgetPass(data: Iauth): Observable<any> {
+    return this.httpClient.put(
+      `${BASE_URL.base_url}/auth/forget-password`,
       data
     );
   }
-
-
   //______________________________logout__________________________
   logout() {
     this.clearTokens();
