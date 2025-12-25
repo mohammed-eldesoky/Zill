@@ -16,6 +16,7 @@ export class MessagesComponent implements OnInit {
   pageSize = 5;
   totalPages = 0;
   paginatedMessages: IMessage[] = [];
+  isLoading = true;
   constructor(private messageService: MessagesService) {}
 
   ngOnInit(): void {
@@ -52,6 +53,7 @@ prevPage() {
             this.totalPages = Math.ceil(this.messages.length / this.pageSize);
   this.updatePagination();
         }
+        this.isLoading = false; 
       },
       error: (err) => {
         console.log(err);
