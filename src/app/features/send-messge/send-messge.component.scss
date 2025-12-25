@@ -1,3 +1,16 @@
+.card{
+  width: 100% !important;
+  .link{
+background-color: var(--form-color) !important;
+input{
+color: var(--card-text) !important;
+}
+
+  }
+  img{
+    height: 400px !important;
+  }
+}
 .hover-shadow {
   transition: all 0.3s ease !important;
 }

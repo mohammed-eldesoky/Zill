@@ -1,11 +1,37 @@
 <div
-  class="container d-flex justify-content-center align-items-center min-vh-100"
+  class="container d-flex justify-content-center align-items-center w-100"
 >
-  <div class="card shadow-lg border-0 rounded-4 w-100" style="max-width: 520px">
-    <div class="card-header mx-auto d-flex justify-content-center">
-      <img src="assets/img4.jpg" class="w-100 mx-auto" alt="" />
+<div class="row">
+  <div class="col-md-12 w-100 ">
+
+  <!-- Card -->
+  <div class="card shadow-lg border-0 rounded-4  " >
+    <div class="card-header  d-flex justify-content-center">
+      <img src="assets/img4.jpg" class="w-100  " alt="" />
     </div>
     <div class="card-body p-4">
+          <!-- Share Link -->
+     @if (showShareLink) {
+<div
+  class="link d-flex align-items-center  bg-light rounded-3 p-2 mb-3"
+>
+  <input
+    type="text"
+    class="form-control border-0 bg-transparent small"
+    [value]="shareLink"
+    readonly
+  />
+
+  <button
+    type="button"
+    class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-1"
+    (click)="copyLink()"
+  >
+    <i class="bi bi-clipboard"></i>
+    Copy
+  </button>
+</div>
+}
       <!-- Title -->
       <h4 class="text-center fw-bold mb-2">Send an Anonymous Message</h4>
       <p class="text-center text-white-50 mb-4">
@@ -66,4 +92,9 @@
       </form>
     </div>
   </div>
+
+</div>
+
+</div>
+
 </div>
