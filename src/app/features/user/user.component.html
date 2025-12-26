@@ -1,1 +1,39 @@
-<p>user works!</p>
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="d-flex flex-column align-items-center">
+    
+    <!-- Profile Image Preview -->
+    <div class="profile-image-wrapper mb-3 position-relative">
+      <img 
+        [src]="previewUrl || 'https://via.placeholder.com/150'" 
+        alt="Profile Picture" 
+        class="rounded-circle border" 
+        style="width: 150px; height: 150px; object-fit: cover;"
+      />
+      <div class="position-absolute bottom-0 end-0">
+        <label for="profileInput" class="btn btn-sm btn-primary">
+          <i class="bi bi-camera"></i> تغيير
+        </label>
+      </div>
+    </div>
+
+    <!-- File Input (hidden) -->
+    <input type="file" id="profileInput" (change)="onFileSelected($event)" hidden />
+
+    <!-- Upload Button -->
+    <button 
+      class="btn btn-success mt-2"
+      (click)="uploadProfile()"
+      [disabled]="!selectedFile"
+    >
+      رفع الصورة
+    </button>
+
+ @if (message) {
+    <div class="mt-3">
+      <button class="btn" [class]="messageType === 'success' ? 'btn-success' : 'btn-danger'">
+        {{ message }}
+      </button>
+    </div>
+}
+  </div>
+</div>
