@@ -6,12 +6,13 @@ import { HttpClient, provideHttpClient, withFetch, withInterceptors } from '@ang
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { provideTranslateService, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-
+import { loadingInterceptor } from './core/interceptors/loading';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
-   provideHttpClient(withFetch(), withInterceptors([authInterceptor])),
+   provideHttpClient(withFetch(), withInterceptors([authInterceptor, loadingInterceptor])),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
    provideTranslateService({
@@ -21,7 +22,8 @@ export const appConfig: ApplicationConfig = {
       }),
       fallbackLang: 'en',
       lang: 'en'
-    })
+    }),
+    importProvidersFrom(NgxSpinnerModule),
 
   ],
 };
