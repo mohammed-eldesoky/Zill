@@ -11,8 +11,13 @@ export const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
-    canActivate:[guestGuard],
+    canActivate: [guestGuard],
     children: [
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
       {
         path: 'login',
         loadComponent: () =>
@@ -47,8 +52,7 @@ export const routes: Routes = [
           import('./core/auth/forget-password/forget-password.component').then(
             (c) => c.ForgetPasswordComponent
           ),
-      }
-
+      },
     ],
   },
 
@@ -59,6 +63,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     canActivateChild: [authGuardGuard],
     children: [
+      { path: '', redirectTo: '', pathMatch: 'full' },
       {
         path: '',
         loadComponent: () =>
@@ -90,6 +95,7 @@ export const routes: Routes = [
             (c) => c.SettignsComponent
           ),
         children: [
+          { path: '', redirectTo: 'update-password', pathMatch: 'full' },
           {
             path: 'update-password',
             loadComponent: () =>
